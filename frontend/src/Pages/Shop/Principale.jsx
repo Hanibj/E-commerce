@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SidebarProduct from '../../Components/Sidebar/SidebarProduct';
 import  './Shop.css'
 import Search from '../../Components/SearchBar/Search';
+import NavBarAdmin from '../../Components/NavBar/NavBarAdmin';
 /*
   This example requires some changes to your config:
   
@@ -73,7 +74,8 @@ const Principale=()=> {
     // }
     return (
         <>
-        <Navbaruser/>
+        {/* <Navbaruser/> */}
+       <NavBarAdmin/> 
         <Search/>
 <div className='Box'>
 <div className='Side'>

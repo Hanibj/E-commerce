@@ -1,3 +1,5 @@
+import Navbarr from "../../Components/NavBar/Navbarr";
+
 /*
   This example requires some changes to your config:
   
@@ -15,6 +17,7 @@
 export default function Signin() {
     return (
       <>
+      <Navbarr/>
         {/*
           This example requires updating your template:
   
