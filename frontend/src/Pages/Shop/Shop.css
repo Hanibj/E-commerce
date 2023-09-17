@@ -1,7 +1,7 @@
 .Box{
     display: flex;
     flex-direction: row;
-    padding-top: 70px;
+    padding-top: 50px;
 }
 .Side{
    
@@ -14,6 +14,7 @@
 }
 .input-group{
     padding-top: 50px;
+    
 }
 /* .Affiche{
     padding-left: 150px;
