@@ -8,7 +8,8 @@ import Card from '../../Pages/Shop/Card'
 import Frip from '../../Client/Frip'
 import Personaliser from '../../Client/Personaliser'
 import NewProduct from '../../Client/NewProduct'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Fouteur from '../Fouteur/Fouteur'
 
 const Routess = () => {
   return (
@@ -24,6 +25,7 @@ const Routess = () => {
         <Route path='/Client/Personalisier' element={<Personaliser/>}/>
         <Route path='/Client/Nouveau' element={<NewProduct/>}></Route>
     </Routes>
+
     </>
   )
 }
