@@ -22,7 +22,7 @@
 import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
-
+import NavBaruser from '../../Components/NavBar/NavBaruser'
 const product = {
   name: 'Basic Tee 6-Pack',
   price: '$192',
@@ -86,6 +86,8 @@ export default function Card() {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
 
   return (
+    <>
+    <NavBaruser/>
     <div className="bg-white">
       <div className="pt-6">
         <nav aria-label="Breadcrumb">
@@ -328,5 +330,6 @@ export default function Card() {
         </div>
       </div>
     </div>
+    </>
   )
 }
