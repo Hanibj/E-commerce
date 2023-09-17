@@ -3,6 +3,7 @@ import Navbaruser from '../../Components/NavBar/NavBaruser'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SidebarProduct from '../../Components/Sidebar/SidebarProduct';
 import  './Shop.css'
+import Search from '../../Components/SearchBar/Search';
 /*
   This example requires some changes to your config:
   
@@ -73,10 +74,7 @@ const Principale=()=> {
     return (
         <>
         <Navbaruser/>
-        <div class="input-group">
-  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-  <button type="button" class="btn btn-outline-primary">search</button>
-</div>
+        <Search/>
 <div className='Box'>
 <div className='Side'>
   <SidebarProduct/>
