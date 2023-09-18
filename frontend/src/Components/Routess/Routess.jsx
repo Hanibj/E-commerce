@@ -10,6 +10,7 @@ import Personaliser from '../../Client/Personaliser'
 import NewProduct from '../../Client/NewProduct'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Fouteur from '../Fouteur/Fouteur'
+import AjouterProduit from '../../Admin/Product/AjouterProduit'
 
 const Routess = () => {
   return (
@@ -21,6 +22,7 @@ const Routess = () => {
         <Route path='/Signup' element={<SignUp/>}/>
         <Route path='/Market' element={<Principale/>}/>
         <Route path='/Card' element={<Card/>}/>
+        <Route path='/Admin/AjouterProduit' element={<AjouterProduit/>}/>
         <Route path='/Client/Frip' element={<Frip/>}/>
         <Route path='/Client/Personalisier' element={<Personaliser/>}/>
         <Route path='/Client/Nouveau' element={<NewProduct/>}></Route>

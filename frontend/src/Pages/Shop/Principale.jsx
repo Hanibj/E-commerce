@@ -75,7 +75,7 @@ const Principale=()=> {
     return (
         <>
         {/* <Navbaruser/> */}
-       <NavBarAdmin/> 
+       <Navbaruser/> 
         <Search/>
 <div className='Box'>
 <div className='Side'>

@@ -33,32 +33,32 @@ const SidebarProduct = () => {
                 </tr>
                 <tr>
                     <td>
-                        <input type='checkbox' name='vetemments' value="" />T-Shirt
+                        <input type='checkbox' name='vetemments' value="tshirt" />T-Shirt
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type='checkbox' name='vetemments' value="" />Pulls
+                        <input type='checkbox' name='vetemments' value="pulls" />Pulls
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type='checkbox' name='vetemments' value="" />Jeans
+                        <input type='checkbox' name='vetemments' value="jeans" />Jeans
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type='checkbox' name='vetemments' value="" />Shorts
+                        <input type='checkbox' name='vetemments' value="shorts" />Shorts
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type='checkbox' name='vetemments' value="" />Pantalons
+                        <input type='checkbox' name='vetemments' value="pantallons" />Pantalons
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type='checkbox' name='vetemments' value="" />Chaussures
+                        <input type='checkbox' name='vetemments' value="chaussures" />Chaussures
                     </td>
                 </tr>
                 
