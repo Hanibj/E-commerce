@@ -1,7 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbarr from '../../Components/NavBar/Navbarr'
 
 const SignUp = () => {
+  const [email,setEmail]=useState('')
+  const [password,setPassword]=useState('')
+  const [nom,setNom]=useState('')
+  const [prenom,setPrenom]=useState('')
+  const [datenaiss,setDatenaiss]=useState('')
+  const [tel,setTel]=useState('')
+  const [typeuser,setTypeuser]=useState('Client')
+  const HandleSignUp=async (e)=>{
+    e.preventDefault()
+        const response =await fetch('http://localhost:4000/api/Authentification/SignUp',{
+    
+        method:'POST',
+        body: JSON.stringify({nom,prenom,datenaiss,email,tel,password,typeuser}),
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          }
+         })
+        const jso=await response.json()
+        if(response.ok){
+          alert('connexion réuissit')
+        }
+        else{
+          alert('connexion echoué')
+        }
+      }
     return (
         <>
     <Navbarr/>
@@ -30,6 +56,7 @@ const SignUp = () => {
                       type="text"
                       autoComplete="nom"
                       required
+                      onChange={(e)=>setNom(e.target.value)}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -45,6 +72,7 @@ const SignUp = () => {
                       type="text"
                       autoComplete="prenom"
                       required
+                      onChange={(e)=>setPrenom(e.target.value)}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -60,6 +88,7 @@ const SignUp = () => {
                       type='date'
                       autoComplete="datenaiss"
                       required
+                      onChange={(e)=>setDatenaiss(e.target.value)}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -75,6 +104,7 @@ const SignUp = () => {
                       type="email"
                       autoComplete="email"
                       required
+                      onChange={(e)=>setEmail(e.target.value)}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -90,6 +120,7 @@ const SignUp = () => {
                       type='tel'
                       autoComplete="tel"
                       required
+                      onChange={(e)=>setTel(e.target.value)}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -106,6 +137,7 @@ const SignUp = () => {
                       type="password"
                       autoComplete="current-password"
                       required
+                      onChange={(e)=>setPassword(e.target.value)}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -115,7 +147,8 @@ const SignUp = () => {
                   <button
                     type="submit"
                     className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
+                 onClick={(e)=>HandleSignUp(e)}
+                 >
                       Créer Votre Compte
                   </button>
                 </div>

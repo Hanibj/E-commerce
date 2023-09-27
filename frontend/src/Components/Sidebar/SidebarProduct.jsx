@@ -8,7 +8,7 @@ const SidebarProduct = () => {
 
     return (
         <div>
-            <table border='1px'>
+            <table >
                 <tr>
                     <td>
                         <h6>Sexe</h6>
@@ -24,11 +24,16 @@ const SidebarProduct = () => {
                         <input type='checkbox' name='sexe' value="femme" />Femme
                     </td>
                 </tr>
-
                 <tr>
 
                     <td>
-                        <h6> Vêtemments</h6>
+                       <hr/>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <h6> Type</h6>
                     </td>
                 </tr>
                 <tr>
@@ -61,7 +66,9 @@ const SidebarProduct = () => {
                         <input type='checkbox' name='vetemments' value="chaussures" />Chaussures
                     </td>
                 </tr>
-                
+                <td>
+                       <hr/>
+                    </td>
                 <tr>
 
                     <td>
@@ -88,7 +95,9 @@ const SidebarProduct = () => {
                         <input type='checkbox' name='taille' value="xl" />XL
                     </td>
                 </tr>
-     
+                <td>
+                       <hr/>
+                    </td>
                 <tr>
                     <td>
                         <h6>Prix</h6>
@@ -106,7 +115,7 @@ const SidebarProduct = () => {
                             onChange={handleSliderChange}
                         />
                         <div className='bon' >
-                            {/* {getEmoji()} */}
+                         
                             <span  >{prix} DT</span>
                         </div>
                     </td>
@@ -117,6 +126,9 @@ const SidebarProduct = () => {
           
                     </td>
                 </tr>
+                <td>
+                       <hr/>
+                    </td>
                 <tr>
                     <td>
                     <button type="button" class="btn btn-outline-success mt-2">Valider</button>

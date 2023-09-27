@@ -1,77 +1,41 @@
 import React from 'react'
 import Navbaruser from '../../Components/NavBar/NavBaruser'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SidebarProduct from '../../Components/Sidebar/SidebarProduct';
-import  './Shop.css'
-import Search from '../../Components/SearchBar/Search';
-import NavBarAdmin from '../../Components/NavBar/NavBarAdmin';
-/*
-  This example requires some changes to your config:
+import SidebarProduct from '../../Components/Sidebar/SidebarProduct'
+import './Shop.css'
+import Search from '../../Components/SearchBar/Search'
+import  { useEffect, useState } from 'react'
+
+import { FaDollyFlatbed } from "react-icons/fa";
+
+
   
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
-const products = [
-    {
-      id: 1,
-      name: 'Basic Tee',
-      href: '#',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-      imageAlt: "Front of men's Basic Tee in black.",
-      price: '$35',
-      color: 'Black',
-    },
-    {
-        id: 2,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-      },
-      {
-        id: 3,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-      },
-      {
-        id: 4,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-      },
-      {
-        id: 5,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-      },
-    // More products...
-  ]
-  
-const Principale=()=> {
-    // const handleCard =()=>{
-    //     window.location.href='/Card'
-    // }
+const  Principale=()=> {
+   const [products,setProduct]=useState([])
+
+
+   //Fonction d'affichage des Produit
+
+   useEffect(()=>{
+    const AfficheProduit =async()=>{
+        const response =await fetch('http://localhost:4000/api/user/Product')
+        const jso=await response.json()
+        if(!response.ok){
+            console.log('erreur de recupération des produit')
+
+        } else 
+        {
+            console.log('reccupération etablir');
+            console.log(jso)
+            setProduct(jso)
+        }
+    }
+    AfficheProduit()
+   },[])
+const handleCard =(e,product)=>{
+  window.location.href=`/Client/Card/${product._id}`
+}
+
     return (
         <>
         {/* <Navbaruser/> */}
@@ -88,10 +52,12 @@ const Principale=()=> {
   
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
-              <div key={product.id} className="group relative">
+                <div key={product.id}>
+              <div  className="group relative">
+                {product.length<0?<h1>Pas De Produit</h1>:<>
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                   <img
-                    src={product.imageSrc}
+                    src={`http://localhost:4000/${product.imageproduit}`}
                     alt={product.imageAlt}
 
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
@@ -101,18 +67,28 @@ const Principale=()=> {
                 <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-700">
-                      <a href='/Card'>
+                 
                         <span aria-hidden="true" className="absolute inset-0" />
-                        {product.name}
-                      </a>
+                        {product.nomproduit}
+                      
                     </h3>
-                    <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                    <p className="text-sm font-medium text-gray-900">{product.descriptionproduit}</p>
+                  <p className="text-sm font-medium text-gray-900">{product.tailleproduit}</p>
+                    <p className="mt-1 text-sm text-gray-500">{product.prix}DT</p>
                   </div>
-                  <p className="text-sm font-medium text-gray-900">{product.price}</p>
-                  <button   class="btn btn-primary ">Buy</button>
+
+                
+
+                  
                 </div>
+                </>}
+              </div>
+              <button onClick={(e)=>handleCard(e,product)} className="btn btn-primary  " ><FaDollyFlatbed/></button>
+              
+
               </div>
             ))}
+          
           </div>
         </div>
       </div>

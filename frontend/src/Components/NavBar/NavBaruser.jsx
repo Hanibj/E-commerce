@@ -4,9 +4,10 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
   { name: 'Home', href: '/Market'},
-  { name: 'New Product', href: '/Client/Nouveau' },
-  { name: 'Frip', href: '/Client/Frip' },
+  { name: 'New Product',href: '/Client/Nouveau' },
+  { name: 'Frip', href: `/Client/Frip` },
   { name: 'Persenalisie', href: '/Client/Personalisier' },
+  { name: 'Reservation', href: '/Client/Reservation' },
 ]
 
 function classNames(...classes) {
@@ -94,27 +95,18 @@ export default function Navbaruser() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            href="/Admin/Profile"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Your Profile
                           </a>
                         )}
                       </Menu.Item>
+          
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
+                            href="/Logout"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Sign out

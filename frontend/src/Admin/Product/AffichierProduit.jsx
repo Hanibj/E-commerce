@@ -1,26 +1,23 @@
-import React from 'react'
-import Navbaruser from '../Components/NavBar/NavBaruser'
+import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SidebarProduct from '../Components/Sidebar/SidebarProduct'
-import '../Pages/Shop/Shop.css'
-import Search from '../Components/SearchBar/Search'
-import  { useEffect, useState } from 'react'
-
-import { FaDollyFlatbed } from "react-icons/fa";
-import { useParams } from 'react-router-dom';
+import SidebarProduct from '../../Components/Sidebar/SidebarProduct';
+import  '../../Pages/Shop/Shop.css'
+import Search from '../../Components/SearchBar/Search';
+import NavBarAdmin from '../../Components/NavBar/NavBarAdmin';
+import { MdModeEditOutline } from "react-icons/md";
+import { AiFillDelete } from "react-icons/ai";
 
 
   
-const  Frip=()=> {
+const AffichierProduit=()=> {
    const [products,setProduct]=useState([])
-  const {natureproduit}=useParams()
+
 
    //Fonction d'affichage des Produit
 
    useEffect(()=>{
-    
     const AfficheProduit =async()=>{
-        const response =await fetch(`http://localhost:4000/api/User/ProduitChoisir/${'frip'}`)
+        const response =await fetch('http://localhost:4000/api/Admin/Product')
         const jso=await response.json()
         if(!response.ok){
             console.log('erreur de recupération des produit')
@@ -34,14 +31,41 @@ const  Frip=()=> {
     }
     AfficheProduit()
    },[])
-const handleCard =(e,product)=>{
-  window.location.href=`/Client/Card/${product._id}`
-}
+
+
+
+   //Fonction de modification des Produit
+   const handleUpdate =(e,p) =>{
+    e.preventDefault()
+    window.location.href=`/Admin/Product/ModifierProduit/${p._id}`
+   }
+
+
+
+   //Fonction de suppression des Produit
+   const handleSuppremier=async (e,p)=>{
+    e.preventDefault()
+    const response=await fetch(`http://localhost:4000/api/Admin/SuppremierProduit/${p._id}`,{
+        method:'DELETE'
+    })
+    const jso=await response.json()
+    if(!response.ok){
+        console.log('erreur de suppression des produit')
+
+    } else 
+    {
+        console.log('supression etablir');
+        window.location.reload()
+    }
+   }
+
+
+
 
     return (
         <>
         {/* <Navbaruser/> */}
-       <Navbaruser/> 
+       <NavBarAdmin/> 
         <Search/>
 <div className='Box'>
 <div className='Side'>
@@ -69,10 +93,10 @@ const handleCard =(e,product)=>{
                 <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-700">
-                 
+                      <a href='/Card'>
                         <span aria-hidden="true" className="absolute inset-0" />
                         {product.nomproduit}
-                      
+                      </a>
                     </h3>
                     <p className="text-sm font-medium text-gray-900">{product.descriptionproduit}</p>
                   <p className="text-sm font-medium text-gray-900">{product.tailleproduit}</p>
@@ -85,8 +109,9 @@ const handleCard =(e,product)=>{
                 </div>
                 </>}
               </div>
-              <button onClick={(e)=>handleCard(e,product)} className="btn btn-primary  " ><FaDollyFlatbed/></button>
-              
+              <button  onClick={(e)=>handleUpdate(e,product)} className="btn btn-primary  " ><MdModeEditOutline/></button>
+              <button type="button" onClick={(e)=>handleSuppremier(e,product)} 
+              className="btn btn-danger"><AiFillDelete/></button>
 
               </div>
             ))}
@@ -101,4 +126,4 @@ const handleCard =(e,product)=>{
   }
   
 //     
-export default Frip
+export default AffichierProduit

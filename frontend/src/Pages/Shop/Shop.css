@@ -6,10 +6,11 @@
 .Side{
    
 
- 
+    margin-left: 24px;
    border: 1px solid;
    height: max-content;
    width: 150px;
+   background-color: #e3ebee;
  
 }
 .input-group{
