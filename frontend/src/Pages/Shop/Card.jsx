@@ -107,6 +107,14 @@ export default function Card() {
                 <p className="text-sm text-gray-600">{product.prix}DT</p>
               </div>
             </div>
+            
+            <div className="mt-10">
+              <h2 className="text-sm font-medium text-gray-900">Quantité En Stock</h2>
+
+              <div className="mt-4 space-y-6">
+                <p className="text-sm text-gray-600">{product.nombre}</p>
+              </div>
+            </div>
           </div>
         </div>
    </div>

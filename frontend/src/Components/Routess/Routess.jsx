@@ -28,7 +28,9 @@ const Routess = () => {
     setIsLogin(token === 'true');
 
     const user =localStorage.getItem('type');
-          setType(user);
+    const typ=JSON.parse(user)
+          setType(typ);
+          console.log(typ)
        
   }, []);
   return (
@@ -45,7 +47,8 @@ const Routess = () => {
         <Route path='/Admin/Reservation' element={<ReservationClient/>}/>
         <Route path='/Admin/Reservation/Modifier/:id' element={<ModifierReservation/>}/>
         <Route path='/Admin/Profile' element={<Profile/>}/>
-        <Route path='/Logout' element={<Logout/>}/></Routes>
+        <Route path='/Logout' element={<Logout/>}/>
+        </Routes>
         </> ):(<Routes>
                  {/* Routes Des Utilisateur */}
                  <Route path='/Market' element={<Principale/>}/>

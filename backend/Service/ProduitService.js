@@ -10,6 +10,7 @@ const AjouterProduit = async (req, res) => {
     const sexe=req.body.sexe
     const typeproduit=req.body.typeproduit
     const tailleproduit=req.body.tailleproduit
+    const nombre=req.body.nombre
     const natureproduit=req.body.natureproduit
 
     try {
@@ -18,6 +19,7 @@ const AjouterProduit = async (req, res) => {
          descriptionproduit:descriptionproduit,
          natureproduit:natureproduit,
          imageproduit:imageproduit,
+         nombre:nombre,
          prix: prix, 
          sexe:sexe,
          typeproduit:typeproduit,
@@ -125,6 +127,7 @@ const UpdateProduct = async (req, res) => {
         prix: req.body.prix,
         imageproduit: imageproduit,
         natureproduit:req.body.natureproduit,
+        nombre:req.body.nombre,
         sexe: req.body.sexe,
         typeproduit: req.body.typeproduit,
         tailleproduit: req.body.tailleproduit,
@@ -167,8 +170,30 @@ console.log(product)
 return res.status(200).json(product)
 }
 
+
+const SearchProduct = async (req, res) => {
+  console.log(req.body)
+  try {
+    const { searchTerm } = req.body; 
+    const produitsTrouves = await Produit.find({
+      $or: [
+        { nomproduit: { $regex: searchTerm, $options: 'i' } }, // Recherche insensible à la casse
+        { descriptionproduit: { $regex: searchTerm, $options: 'i' } },
+        { typeproduit: { $regex: searchTerm, $options: 'i' } },
+        { tailleproduit: { $regex: searchTerm, $options: 'i' } },
+        { natureproduit: { $regex: searchTerm, $options: 'i' } },
+        ],
+    });
+console.log(produitsTrouves)
+    res.status(200).json(produitsTrouves);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erreur lors de la recherche de produits' });
+  }
+};
   module.exports={
     AjouterProduit,
+    SearchProduct,
     AllProduct,
     singleProduct,
     UpdateProduct,

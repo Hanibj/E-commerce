@@ -12,7 +12,7 @@ const AjouterProduit = () => {
   const [typeproduit, setTypeproduit] = useState([]);
   const [tailleproduit, setTailleproduit] = useState('');
   const [natureproduit, setNatureproduit] = useState('');
-
+const [nombre,setNombre]=useState('')
   const handleAjouter = async (e) => {
     e.preventDefault();
 
@@ -25,6 +25,7 @@ const AjouterProduit = () => {
     formData.append('typeproduit', typeproduit);
     formData.append('tailleproduit', tailleproduit);
     formData.append('natureproduit', natureproduit);
+    formData.append('nombre', nombre);
     formData.append('imageproduit', imageproduit); // Append the file
 
     const response = await fetch('http://localhost:4000/api/Admin/AjouterProdui', {
@@ -125,6 +126,23 @@ const AjouterProduit = () => {
                 />
               </div>
             </div>
+            <div>
+              <label htmlFor="qte" className="block text-sm font-medium leading-6 text-gray-900">
+                Quantité En Stock <b>*</b>
+              </label>
+              <div className="mt-2">
+                <input
+                  id="qte"
+                  name="nombre"
+                  type='number'
+                  autoComplete="nombre"
+                  placeholder='Quantité En Stock'
+                  onChange={(e) => setNombre(e.target.value)}
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
             {/* <div>
               <label htmlFor="imageproduit" className="block text-sm font-medium leading-6 text-gray-900">
                 Image Du Prouit <b>*</b>
@@ -158,16 +176,16 @@ const AjouterProduit = () => {
             <div>   <label htmlFor="sexe" className="block text-sm font-medium leading-6 text-gray-900">
               Sexe <b>*</b>
             </label>
-              <label class="inline-flex items-center">
-                <input type="radio" class="form-checkbox h-5 w-5 text-blue-600"
+              <label className="inline-flex items-center">
+                <input type="radio" className="form-checkbox h-5 w-5 text-blue-600"
                   onChange={(e) => setSexe(e.target.value)} name='sexe' value='Homme' />
-                <span class="ml-2 text-gray-700"> Homme</span>
+                <span className="ml-2 text-gray-700"> Homme</span>
               </label>
-              <label class="inline-flex items-center">
-                <input type="radio" class="form-checkbox h-5 w-5 text-blue-600"
+              <label className="inline-flex items-center">
+                <input type="radio" className="form-checkbox h-5 w-5 text-blue-600"
                   onChange={(e) => setSexe(e.target.value)}
                   name='sexe' value='femme' />
-                <span class="ml-2 text-gray-700">Femme</span>
+                <span className="ml-2 text-gray-700">Femme</span>
               </label>
             </div>
             <div>
@@ -177,7 +195,7 @@ const AjouterProduit = () => {
               <div className="mt-2">
 
                 <select
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   onChange={(e) => setTypeproduit(e.target.value)}
                   name='typeproduit'>
                   <option value=''>Choisir Le Type Du Produit</option>
@@ -197,7 +215,7 @@ const AjouterProduit = () => {
               <div className="mt-2">
 
                 <select
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   onChange={(e) => setNatureproduit(e.target.value)}
                   name='natureproduit'>
                   <option value=''>Choisir Le Type Du Produit</option>

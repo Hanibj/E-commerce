@@ -15,7 +15,7 @@ routerUser.get('/Product',servicesProduit.AllProduct)
 routerUser.get('/Produit/:id',upload.single('imageproduit') ,servicesProduit.singleProduct)
 //produit selon le choix frip / new /personalisier
 routerUser.get('/ProduitChoisir/:natureproduit' ,servicesProduit.ProductChoisie)
-
+routerUser.post('/SearchBar' ,servicesProduit.SearchProduct)
 //Reservation route
 routerUser.post("/Reserver",servicesReservation.ReserverProduit)
  routerUser.get("/AllReserver/:email",servicesReservation.AllReserverProduit)

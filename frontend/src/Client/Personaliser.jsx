@@ -41,7 +41,7 @@ const handleCard =(e,product)=>{
         <>
         {/* <Navbaruser/> */}
        <Navbaruser/> 
-        <Search/>
+     
 <div className='Box'>
 <div className='Side'>
   <SidebarProduct/>

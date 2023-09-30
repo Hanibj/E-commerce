@@ -12,6 +12,7 @@ var ProduitSchema = new mongoose.Schema({
     typeproduit:{type:String,required: true},
     tailleproduit:{type:String,required: true},
     natureproduit:{type:String,required: true},
+    nombre:{type:Number,required: true},
     lastActiveAt: Date
 });
 
